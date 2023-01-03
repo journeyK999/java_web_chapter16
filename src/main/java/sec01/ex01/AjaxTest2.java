@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/ajaxTest1")
-public class AjaxTest1 extends HttpServlet {
+@WebServlet("/ajaxTest2")
+public class AjaxTest2 extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -26,12 +26,24 @@ public class AjaxTest1 extends HttpServlet {
 		
 		req.setCharacterEncoding("UTF-8");
 		resp.setContentType("text/html; charset=utf-8");
-		String param = req.getParameter("param");
 		
-		System.out.println("param = " + param);
+		String result = "";
 		
 		PrintWriter writer = resp.getWriter();
 		writer.print("안녕하세요~ 서버입니다~");
+		
+		result = "<main><book>"+
+		         "<title><![CDATA[초보자를 위한 자바 프로그래밍]]></title>" +
+		         "<writer><![CDATA[인포북스 저 | 이병승]]></writer>" +                             
+		         "<image><![CDATA[http://localhost:8090/pro16/image/image1.jpg]]></image>"+
+		         "</book>"+
+		         "<book>"+
+		         "<title><![CDATA[모두의 파이썬]]></title>" +
+		         "<writer><![CDATA[길벗 저 | 이승찬]]></writer>" +                 
+		         "<image><![CDATA[http://localhost:8090/pro16/image/image2.jpg]]></image>"+
+		         "</book></main>";
+		System.out.println(result);
+		writer.print(result);
 		
 	}
 }
